@@ -7,10 +7,11 @@ class addItem extends Component {
     qty: 1,
   };
 
-  handleChange = (e) => {
+  handleChange = (name) => (e) => {
+    console.log(name);
     console.log(e.target.id + ": " + e.target.value);
     this.setState({
-      [e.target.id]: e.target.value,
+      [name]: e.target.value,
     });
   };
 
@@ -31,16 +32,21 @@ class addItem extends Component {
             type="text"
             value={this.state.product}
             placeholder="Enter Product"
-            id="product"
-            onChange={this.handleChange}
+            onChange={this.handleChange("product")}
             required
           />
           <input
             type="number"
             value={this.state.price}
             placeholder="Enter Price"
-            id="price"
-            onChange={this.handleChange}
+            onChange={this.handleChange("price")}
+            required
+          />
+          <input
+            type="number"
+            value={this.state.qty}
+            placeholder="Enter qty"
+            onChange={this.handleChange("qty")}
             required
           />
           <input type="submit" value="Add" />
